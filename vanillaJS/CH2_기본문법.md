@@ -73,3 +73,85 @@ has space
 */
 ```
 
+6. 출력
+
+```javascript
+alert([String message])
+```
+
+7. 문자열 자료형
+
+```
+'This is "string"'
+"This is 'string'"
+"This is \"string\""
+'This is \'string\''
+```
+
+| 이스케이프 문자 | 설명    |
+| -------- | ----- |
+| \t       | 수평 탭  |
+| \n       | 줄 바꿈  |
+| \'       | 작은따옴표 |
+| \"       | 큰따옴표  |
+| \\\      | 역 슬래시 |
+
+8. 숫자 자료형
+
+   > 복소수 안됨
+
+```javascript
+273
+52.273
+```
+
+9. 불 자료형
+
+```javascript
+true // =1
+false // =0
+```
+
+
+
+### 자료형 검사
+
+> typeof 연산자
+
+```javascript
+typeof [변수]
+```
+
+
+
+### 자료형 변환
+
+1. 숫자와 문자열 
+
+- <u>덧셈 연산</u> 시, **숫자 자료형을 문자열 자료형으로** 자동 변환
+
+- <u>더하기 연산자 외</u>의 사칙 연산자는 **문자열 자료형을 숫자 자료형으로** 자동 변환
+
+  > Number() 함수 : 복소수는 NaN(Not a Number)
+
+```javascript
+Number([변수])
+// ex.
+var number = Math.sqrt(-3);
+alert(number);	// NaN
+```
+
+2. 불 자료형
+
+   > Boolean() 함수
+
+```javascript
+/* false */
+Boolean(0)
+Boolean(NaN)
+Boolean('')
+Boolean(null)
+Boolean(undefined)
+```
+
+### 
