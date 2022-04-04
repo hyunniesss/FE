@@ -42,7 +42,7 @@ function 함수() {alert('함수 A');}	// 1.
 
 ### 매개변수
 
-ex. Array() 함수의 매개변수에 따르차이
+ex. Array() 함수의 매개변수에 따른 차이
 
 | 함수 형태                | 설명                      |
 | -------------------- | ----------------------- |
@@ -74,5 +74,55 @@ function <외부함수>(){
     <함수코드>
   }
     ...}
+```
+
+> 내부 함수는 외부에서 사용할 수 없음
+
+
+
+### 콜백 함수
+
+> 매개변수로 전달하는 함수
+
+```javascript
+function callTenTimes(callback) {
+  for(var i=0;i<10;i++){
+    callback();
+  }
+}
+
+var callback = function() {
+  alert('함수 호출');
+};
+
+callTenTimes(callback);
+```
+
+**ex. 익명 콜백 함수**
+
+```javascript
+function callTenTimes(callback) {
+  for(var i=0;i<10;i++){
+    callback();
+  }
+}
+
+callTenTimes(function(){
+  alert('함수 호출');
+});
+```
+
+
+
+### 함수를 리턴하는 함수
+
+```javascript
+function returnFunction(){
+  return function(){
+    alert('HELLO FUNCTION...!');
+  };
+}
+
+returnFunction()();	// 리턴값으로 전달하는 함수까지 호출
 ```
 
