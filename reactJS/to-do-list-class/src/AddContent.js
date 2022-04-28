@@ -18,11 +18,9 @@ class AddContent extends React.Component{
 
         return (
             <div>
-                <div>
-                    <input type="text" id="inputTodo" value={this.state.todo} onChange={this.updTodo}/>
-                    <button type="button" onClick={()=>{this.props.addTodo(this.state.todo); this.resetTodo()}}>
-                        <img src="../image/plus.png" alt="추가" />
-                    </button>
+                <div className="addContainer">
+                    <input type="text" id="inputTodo" value={this.state.todo} onChange={this.updTodo} placeholder="할 일을 작성해주세요."/>
+                    <button className="btn" onClick={()=>{this.props.addTodo(this.state.todo);}}><i className="fa fa-plus"></i></button>
                 </div>
                 {this.props.isError ? <><span className="error">{this.props.errMsg}</span></> : <></>}
             </div>

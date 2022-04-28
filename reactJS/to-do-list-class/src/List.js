@@ -7,14 +7,17 @@ class List extends React.PureComponent {
         <ul>
             {
                 this.props.content.map((item, index) =>{
+                    console.log(index," : ",item.isEditable);
                     return(
                         <li key={index}>
-                            <input type="checkbox" checked={item.isChecked} onClick={() => this.props.chkTodo(index)}/>
                             { item.isEditable ? 
-                                <input type="text" value={item.todo} onChange={()=>this.props.updTodo(index)}/>
-                                : <span className={item.isComplete ? "complete" : ""}>{item.todo}</span> 
+                                (<><input type="text" value={item.todo} onChange={()=>this.props.updTodo(index, item.todo)}/>
+                                <button className="btnedit" onClick={()=>this.props.chngEditable(index)}>OK</button></> )
+                                : (<><span onClick={() => this.props.chkTodo(index)} className={item.isComplete ? "completed" : ""}>{item.todo}</span>
+                                <button className="btn" onClick={()=>this.props.chngEditable(index)}><i className="fa fa-edit"></i></button></>)
                             }
-                            <button className="chngButton" onClick={()=>this.props.chngEditable(index)} disabled={item.isEditable} ><img src="../image/modify.png" alt=""/></button>
+                            <button className="btn" onClick={()=>this.props.removeTodo(index)}><i className="fa fa-trash"></i></button>
+                            
                         </li>
                     )
                 })

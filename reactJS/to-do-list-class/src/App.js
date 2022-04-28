@@ -33,17 +33,28 @@ class App extends React.Component{
     chkTodo = (idx) => {
         let todoList = this.state.todoList;
         todoList[idx].isChecked = !todoList[idx].isChecked;
+        console.log("setState isChecked, "+todoList[idx].isChecked);
         this.setState({todoList});
     }
     chngEditable = (idx) => {
         let todoList = this.state.todoList;
-        todoList[idx].isEditable = !todoList[idx].isEditable;
+        todoList[idx].isEditable = !(todoList[idx].isEditable);
         this.setState({todoList});
-    }  
+        console.log("setState");
+    }
+    removeTodo = (removeIdx) => {
+        let todoList = this.state.todoList.filter((value, index) => (removeIdx!==index));
+        this.setState({todoList});
+    }
+    updTodo = (updIdx, context) => {
+        let todoList = this.state.todoList;
+        todoList[updIdx].todo = context; 
+        this.setState({todoList});
+    }
     render(){
         return (<>
             <AddContent isError={this.state.isError} errMsg={this.state.errMsg} addTodo={this.addTodo}/>
-            <List content={this.state.todoList} chkTodo={this.chkTodo} chngEditable={this.chngEditable}/>
+            <List content={this.state.todoList} updTodo={this.updTodo} chkTodo={this.chkTodo} chngEditable={this.chngEditable} removeTodo={this.removeTodo}/>
         </>);
     }
 }
