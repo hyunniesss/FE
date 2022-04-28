@@ -5,7 +5,7 @@ function App(){
     const [todolist, setTodolist] = useState([]);
     const submitFunc = (e) => {
         e.preventDefault();
-        if(e.target.value === ""){
+        if(todo === ""){
             return;
         }
         setTodolist((todolist) =>[todo, ...todolist]);
@@ -15,15 +15,13 @@ function App(){
     const changeFunc = (e) => {
         setTodo(e.target.value);
     }
-    const checkEvent = (i) => {
-        let el = document.getElementById("li_"+i);
-        console.log(el);
+    const checkEvent = (idx) => {
+        // const el = document.getElementById("li_" + idx);
         // if(el.style.textDecorationLine === "line-through"){
-        //     el.style.textDecorationLine='';
+        //     el.style.setProperty('textDecorationLine', '');
         // } else {
-        //     el.style.textDecorationLine='line-through';
+        //     el.style.setProperty('textDecorationLine','line-through');
         // }
-       // e.target.style.textDecorationLine === "line-through"
     }
     return (
         <div>
@@ -33,7 +31,7 @@ function App(){
                 <button type="button" onClick={submitFunc} >ADD LIST</button>
             </form>
             <hr />
-            {todolist.map((data)=><li id={"li_"+data.id}><label><input type='checkbox' onClick={checkEvent(data.id)} value={data} />{data}</label></li>)}
+            {todolist.map((data, index)=><li key={index} id={"li_"+index}><input type='checkbox' id={"chk_"+index} onClick={checkEvent(index)} value={data} /><label HtmlFor={"chk_"+index}>{data}</label></li>)}
         </div>
     );
 
