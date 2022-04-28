@@ -1,0 +1,24 @@
+ul {
+    list-style: none;
+}
+li {
+    width: fit-content;
+    min-width: 30px;
+}
+.complete {
+    text-decoration-line: line-through;
+    color:grey;
+    text-decoration-color: lightgrey;
+}
+
+img {
+    max-width: 20px;
+    height: auto;
+    /* object-fit: cover; */
+}
+img:hover {
+    cursor: pointer;
+}
+.chngButton {
+    float: right;
+}

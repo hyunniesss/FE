@@ -1,0 +1,13 @@
+img {
+    max-width: 15px;
+    height: auto;
+    /* object-fit: cover; */
+}
+img:hover {
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+    font-size: 5px;
+}
