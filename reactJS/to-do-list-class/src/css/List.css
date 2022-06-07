@@ -10,8 +10,8 @@ li {
 }
 .complete {
     text-decoration-line: line-through;
-    color:grey;
-    text-decoration-color: lightgrey;
+    color:gray;
+    text-decoration-color: dimgray;
 }
 .btn {
     border: 2px solid black;
@@ -20,19 +20,18 @@ li {
     cursor: pointer;
     border-radius: 5px;
 }
+.btn:disabled {
+    border: 2px solid darkgray;
+    background-color: light-grey;
+    color: grey;
+}
+.btn:disabled:hover {
+    cursor:default;
+    background-color: white;
+    color: grey;
+}
 .btn:hover {
     background-color: black;
-    color: white;
-}
-.btnedit {
-    border: 2px solid #04AA6D;
-    background-color: white;
-    color: green;
-    cursor: pointer;
-    border-radius: 5px;
-}
-.btnedit:hover {
-    background-color: #04AA6D;
     color: white;
 }
 span {
