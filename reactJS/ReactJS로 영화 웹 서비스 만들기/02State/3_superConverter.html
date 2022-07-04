@@ -11,13 +11,25 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     function App() {
+      const [minute, setMinute] = React.useState();
+      const [hour, setHour] = React.useState();
+      const onChange = (e) => {
+        setMinute(e.target.value);
+      };
       return (
         <div>
           <h1>SUPER CONVERTER</h1>
           <label htmlFor="minutes">분</label>
-          <input id="minutes" placeholder="MINUTES" type="number" />
+          <input
+            id="minutes"
+            placeholder="MINUTES"
+            type="number"
+            defaultValue={minute}
+            onChange={onChange}
+          />
+          <h4>YOU WANT TO CONVERT {minute} to HOURS</h4>
           <label htmlFor="hours">시간</label>
-          <input id="hours" placeholder="HOURS" type="number" />
+          <input id="hours" placeholder="HOURS" type="number" value={hour} />
         </div>
       );
     }

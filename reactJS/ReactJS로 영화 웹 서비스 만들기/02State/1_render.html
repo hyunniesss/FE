@@ -8,20 +8,23 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-    function countUp() {}
-    function App() {
-      const [counter, setCounter] = React.useState(0);
-      const countUp = () => {
-        // setCounter(counter + 1);
-        setCounter((count) => count + 1);
-      };
+    let counter = 0;
+    const countUp = () => {
+      counter = counter + 1;
+      // 화면에 보일 데이터가 변화하면 화면을 리렌더링해야 변화한 데이터값이 적용된다.
+      render();
+    };
+    const render = () => {
+      ReactDOM.render(<App />, root);
+    };
+    const App = () => {
       return (
         <div>
           <h3>TOTAL CLICKS : {counter}</h3>
           <button onClick={countUp}>CLICK ME</button>
         </div>
       );
-    }
-    ReactDOM.render(<App />, root);
+    };
+    render();
   </script>
 </html>
