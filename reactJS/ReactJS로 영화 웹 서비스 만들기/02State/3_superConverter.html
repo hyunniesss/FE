@@ -11,26 +11,50 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     function App() {
-      const [minute, setMinute] = React.useState();
-      const [hour, setHour] = React.useState();
-      const onChange = (e) => {
-        setMinute(e.target.value);
+      const [amount, setAmount] = React.useState(0);
+      const [flipped, setFlipped] = React.useState(false);
+      const onChangeAmount = (e) => {
+        setAmount(e.target.value);
+      };
+      // const onChangeHour = (e) => {
+      //   setMinute(e.target.value * 60);
+      // };
+      const onReset = () => {
+        setAmount(0);
+      };
+      const onFlip = () => {
+        setFlipped((cur) => !cur);
+        onReset();
       };
       return (
-        <div>
-          <h1>SUPER CONVERTER</h1>
-          <label htmlFor="minutes">분</label>
-          <input
-            id="minutes"
-            placeholder="MINUTES"
-            type="number"
-            defaultValue={minute}
-            onChange={onChange}
-          />
-          <h4>YOU WANT TO CONVERT {minute} to HOURS</h4>
-          <label htmlFor="hours">시간</label>
-          <input id="hours" placeholder="HOURS" type="number" value={hour} />
-        </div>
+        <>
+          <div>
+            <h1>SUPER CONVERTER</h1>
+            <label htmlFor="minutes">분</label>
+            <input
+              id="minutes"
+              placeholder="MINUTES"
+              type="number"
+              value={flipped ? amount * 60 : amount}
+              onChange={onChangeAmount}
+              disabled={flipped}
+            />
+            {
+              // <h4>YOU WANT TO CONVERT {minute} to HOURS</h4>
+            }
+            <label htmlFor="hours">시간</label>
+            <input
+              id="hours"
+              placeholder="HOURS"
+              type="number"
+              value={flipped ? amount : Math.round(amount / 60)}
+              onChange={onChangeAmount}
+              disabled={!flipped}
+            />
+          </div>
+          <button onClick={onReset}>RESET</button>
+          <button onClick={onFlip}>{flipped ? "BACK" : "INVERT"}</button>
+        </>
       );
     }
     const root = document.getElementById("root");
