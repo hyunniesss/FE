@@ -10,7 +10,7 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    function App() {
+    function MinutesToHours() {
       const [amount, setAmount] = React.useState(0);
       const [flipped, setFlipped] = React.useState(false);
       const onChangeAmount = (e) => {
@@ -29,7 +29,7 @@
       return (
         <>
           <div>
-            <h1>SUPER CONVERTER</h1>
+            <h3>MINUTES TO HOURS</h3>
             <label htmlFor="minutes">분</label>
             <input
               id="minutes"
@@ -54,6 +54,74 @@
           </div>
           <button onClick={onReset}>RESET</button>
           <button onClick={onFlip}>{flipped ? "BACK" : "INVERT"}</button>
+        </>
+      );
+    }
+    function MilesToKilometers() {
+      const [amount, setAmount] = React.useState(0);
+      const [flipped, setFlipped] = React.useState(false);
+      const onChangeAmount = (e) => {
+        setAmount(e.target.value);
+      };
+      // const onChangeHour = (e) => {
+      //   setMinute(e.target.value * 60);
+      // };
+      const onReset = () => {
+        setAmount(0);
+      };
+      const onFlip = () => {
+        setFlipped((cur) => !cur);
+        onReset();
+      };
+      return (
+        <>
+          <div>
+            <h3>MILES TO KILOMETERS</h3>
+            <label htmlFor="miles">마일</label>
+            <input
+              id="miles"
+              placeholder="MILES"
+              type="number"
+              value={flipped ? amount * 0.6 : amount}
+              onChange={onChangeAmount}
+              disabled={flipped}
+            />
+            {
+              // <h4>YOU WANT TO CONVERT {minute} to HOURS</h4>
+            }
+            <label htmlFor="kilos">킬로미터</label>
+            <input
+              id="kilos"
+              placeholder="KILOMETERS"
+              type="number"
+              value={flipped ? amount : amount * 1.6}
+              onChange={onChangeAmount}
+              disabled={!flipped}
+            />
+          </div>
+          <button onClick={onReset}>RESET</button>
+          <button onClick={onFlip}>{flipped ? "BACK" : "INVERT"}</button>
+        </>
+      );
+    }
+
+    function App() {
+      const [index, setIndex] = React.useState("");
+      const onSelect = (e) => {
+        setIndex(e.target.value);
+      };
+      return (
+        <>
+          <div>
+            <h1>SUPER CONVERTER</h1>
+            <select onChange={onSelect}>
+              <option value="">SELECT YOUR UNIT</option>
+              <option value="1">MINUTES 2 HOURS</option>
+              <option value="2">MILES 2 KILOMETERS</option>
+            </select>
+          </div>
+          {index == "1" ? <MinutesToHours /> : null}
+          {index == "2" ? <MilesToKilometers /> : null}
         </>
       );
     }

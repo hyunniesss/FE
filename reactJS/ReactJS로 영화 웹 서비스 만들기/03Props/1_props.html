@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // function Button({ style, text, onClick, isBig }) {
+    function Button({ style, text, isBig }) {
+      const { backgroundColor, color, padding, border, borderRadius } = style;
+      return (
+        <button
+          style={{
+            backgroundColor: backgroundColor,
+            color: color ? color : "white",
+            padding: padding ? padding : "10px 20px",
+            border: border ? border : 0,
+            borderRadius: borderRadius ? borderRadius : 10,
+            fontSize: isBig ? 18 : 14,
+          }}
+          // onClick={onClick}
+        >
+          {text}
+        </button>
+      );
+    }
+    function App() {
+      // const onSave = () => {};
+      // const onContinue = () => {};
+      return (
+        <div>
+          <Button
+            style={{
+              backgroundColor: "tomato",
+            }}
+            isBig={true}
+            text={"SAVE"}
+            // onClick={onSave}
+          />
+          <Button
+            style={{
+              backgroundColor: "gray",
+              color: "white",
+              padding: "10px 20px",
+              border: "0",
+              borderRadius: "0",
+            }}
+            isBig={false}
+            text={"CONTINUE"}
+            // onClick={onContinue}
+          />
+        </div>
+      );
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
